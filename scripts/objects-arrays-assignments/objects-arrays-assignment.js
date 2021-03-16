@@ -13,10 +13,10 @@ const musician = {
   numberOfAlbum: 60,
   numberOfSongs: 1800,
   musicStyle: "Blues",
-  instrumentsPlayed: 5;
-  voiceTone: "Baritone"
-  firstAlbumTitle: {
-    name: "Walking in the clouds",
+  instrumentsPlayed: 5,
+  voiceTone: "Baritone",
+  firstAlbum: {
+    title: "Walking in the clouds",
     releasedYear: 1989,
     numberOfTracks: 14,
     copiesSold: "50 Million",
@@ -42,7 +42,7 @@ const lecturer = {
     model: 1987,
     color: "Blue",
     maximumSpeed: "120km/hr",
-    numberOfExhaust: 2
+    numberOfExhaustg: 2
   }
 }
 
