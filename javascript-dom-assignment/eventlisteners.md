@@ -9,7 +9,15 @@ Imagine you employed a gatekeeper. Here are some of his responsibilities:
 2. Confirm car honk (event) and ultimately,   
 3. Open the gate (act, handle it).  
 
-Therefore an eventListener is a gatekeeper that waits for an event to occur (in this case a car honk) in order to carry out a task(opening the gate respectively). Examples of events are when a user clicks a button, mouse-over an element or any keyboard event.  
+Therefore an eventListener is a gatekeeper that waits for an event to occur (in this case a car honk) in order to carry out a task(opening the gate respectively). Examples of the common events in JavaScript are listed below:  
+
+* Click... event triggers when an element is clicked  
+* Submit... event triggers when a form is submitted  
+* Mouseover...event triggers when a cursor moves over an element  
+* Mouseout...when the mouse is pointed out of an element  
+* Keydown...when a user presses a key  
+* dblclick...when a user double clicks  
+* Toggle... when a user open or close n element  
 
 
 
