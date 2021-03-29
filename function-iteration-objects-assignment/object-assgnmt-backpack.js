@@ -133,8 +133,12 @@ class Backpack {
 //Declare a variable and assign the new keyword and our object name having the values called as argument
 
 const newBackPack = new Backpack("Stroller", 10, "Red", 6, 5, 6, false);
-export default Backpack;
 
+
+const anotherBag = new Backpack("Hicker", 13, "Blue", 23, 8, 8, true);
+
+
+export default Backpack;
 
 
 
