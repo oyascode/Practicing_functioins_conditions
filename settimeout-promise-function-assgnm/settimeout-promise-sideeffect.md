@@ -70,7 +70,28 @@ Promises are objects that represents the eventual outcome of an asynchronous ope
 
 ### **Example**
 
+//FIRST EXAMPLE  
 
+```js
+const randomPromise = new Promise((resolve, reject) => {
+
+  let randomNum = Math.floor(Math.random() * 10);
+  
+  if (randomNum <= 5) {
+    resolve("Yes!, we did it")
+  } else {
+    reject("We couldn't make it there!")
+  }
+})
+
+randomPromise.then((resolvedValue) => {
+  console.log(resolvedValue);
+}).catch((rejectReason) => {
+  console.log(rejectReason);
+})
+```
+
+// EXAMPLE 2
 
 ```js
 const snacks = {
