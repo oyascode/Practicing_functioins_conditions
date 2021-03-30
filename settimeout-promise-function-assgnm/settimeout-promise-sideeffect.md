@@ -37,7 +37,14 @@ const getPreferredEatingMode = (preferredMode, eatFastFood, eatHomeFood) =>
 setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters:  
 
 * A callback function and  
-* A delay in milliseconds.
+* A delay in milliseconds.  
+
+The delay time set in milliseconds is the least amount and not necessarily the exact amount of time delay before the scheduled task executes. This is because, after the delay, the task is then added to the asynchronous JavaScript `event-loop` which represents a queue of codes waiting to be run. An heirachy is observed in the event-loop where:  
+
+1. All synchronous operations runs first
+2. All codes in front in the queue will run next
+3. Then our asynchronous task with delay can run.
+
 
 ### **Example**
 ```js
@@ -72,16 +79,20 @@ const snacks = {
   chickenPie: true,
   doughNut: false
 }
+// Order a snack that resolve to fulfil
+const confirmChickenPie = (resolve, reject) => snacks.chickenPie ? resolve("chicken Pie order can be processed") : reject("chicken Pie fully sold out");
 
-const confirmOrder = (resolve, reject) => snacks.chickenPie ? resolve("chicken Pie order can be processed") : reject("chicken Pie fully sold out");
+const orderChickenPie = () => new Promise(confirmChickenPie);
 
-const newOrder = new Promise(confirmOrder);
-console.log(newOrder) // this outputs "Promise { <state>: "fulfilled", <value>: "chicken Pie order can be processed" }"
+console.log(orderChickenPie()) // this outputs "Promise { <state>: "fulfilled", <value>: "chicken Pie order can be processed" }"
 
-const confirmAnotherOrder = (resolve, reject) => snacks.doughnut ? resolve("Loads of doughnut awaiting your order") : reject("Ooooops! we just sold out");
 
-const anotherOrder = new Promise(confirmAnotherOrder);
-console.log(anotherOrder); // this outputs "Promise { <state>: "rejected", <reason>: "Ooooops! we just sold out" }" AND an error response "Uncaught (in promise) Ooooops! we just sold out". The promise object uses its `then()` and `catch()` methods to link the settled promise to a handler...
+// **Order a snack that resolve to reject**
+const confirmDoughnut = (resolve, reject) => snacks.doughnut ? resolve("Loads of doughnut awaiting your order") : reject("Ooooops! we just sold out");
+
+const doughnutOrder = () => new Promise(confirmDoughnut);
+
+console.log(doughnutOrder()); // this outputs "Promise { <state>: "rejected", <reason>: "Ooooops! we just sold out" }" AND an error response "Uncaught (in promise) Ooooops! we just sold out". The promise object uses its `then()` and `catch()` methods to link the settled promise to a handler...
 ```
 ## **What are side effects in programming**
 
